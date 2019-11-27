@@ -1,5 +1,5 @@
 <template>
-  <page>
+  <div class="big_head">
     <div class="wrap">
       <div class="title">
         {{ year }}·年鉴
@@ -7,18 +7,13 @@
         <span class="theme">{{ theme }}</span>
       </div>
     </div>
-  </page>
+  </div>
 </template>
 
 <script>
-import page from './FullPage'
 import { mapGetters } from 'vuex'
 
 export default {
-  components: {
-    page
-  },
-
   computed: {
     ...mapGetters(['year', 'theme', 'viewport'])
   }
@@ -27,6 +22,10 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../stylus/_color'
+.big_head
+  height 100vh
+  width calc(100vw - 16px)
+  position relative
 .wrap
   position absolute
   top 50%
@@ -36,21 +35,21 @@ export default {
   font-size 50px
   transform rotateX(62deg)
   position relative
-  border-left 2px solid blue
   animation appear 1.5s ease-out forwards
   padding-left 30px
   transform-origin bottom
-.title::before
-  content ''
-  position absolute
-  left 0
-  top 50%
-  width 12px
-  height 12px
-  border-radius 50%
-  background blue
-  transform translate(-50%, -50%)
-  animation buling 1.5s infinite
+  // border-left 2px solid blue
+// .title::before
+//   content ''
+//   position absolute
+//   left 0
+//   top 50%
+//   width 12px
+//   height 12px
+//   border-radius 50%
+//   background blue
+//   transform translate(-50%, -50%)
+//   animation buling 1.5s infinite
 .theme
   font-size 20px
   line-height 20px
@@ -62,11 +61,11 @@ export default {
   to
     opacity 1
     transform rotateX(0)
-@keyframes buling
-  0%
-    opacity 0
-  50%
-    opacity 1
-  to
-    opacity 0
+// @keyframes buling
+//   0%
+//     opacity 0
+//   50%
+//     opacity 1
+//   to
+//     opacity 0
 </style>
