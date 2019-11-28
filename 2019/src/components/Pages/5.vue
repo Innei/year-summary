@@ -1,5 +1,5 @@
 <template>
-  <BasicLayout :id="five">
+  <BasicLayout :id="'five'">
     <p class="-big">
       六月，
       <br />

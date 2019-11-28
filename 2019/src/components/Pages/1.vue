@@ -1,6 +1,6 @@
 <template>
   <page>
-    <section class="scene" id="one">
+    <section class="scene" id="one" ref="scene-1">
       <div class="static-container">
         <div class="std">
           <p class="-big">
@@ -25,6 +25,9 @@ import Page from '../../components/FullPage'
 import { mapGetters } from 'vuex'
 
 export default {
+  props: {
+    go: Boolean
+  },
   components: {
     Page
   },
@@ -37,22 +40,32 @@ export default {
     }
   },
   mounted () {
-    this.process = '='.repeat(this.$refs.code.offsetWidth / 8)
-
-    let i = 0
-    let length = this.process.length
-    const timer = setInterval(() => {
-      const arr = this.process.split('')
-      arr[i++] = '#'
-      this.process = arr.join('')
-      if (i === length) {
-        clearInterval(timer)
+    this.processInit()
+    this.$watch('go', (v) => {
+      if (v) {
+        this.processGo()
+      } else {
+        this.processInit()
       }
-    }, 40);
-    // this.process.split('').map(async (item, index) => {
-    //   this.process[index] = '#'
-    //   await sleep(100)
-    // })
+    }, { deep: true })
+  },
+  methods: {
+    processInit() {
+       this.process = '='.repeat(this.$refs.code.offsetWidth / 8)
+    },
+    processGo () {
+    
+      let i = 0
+      let length = this.process.length
+      const timer = setInterval(() => {
+        const arr = this.process.split('')
+        arr[i++] = '#'
+        this.process = arr.join('')
+        if (i === length) {
+          clearInterval(timer)
+        }
+      }, 40);
+    }
   }
 }
 
