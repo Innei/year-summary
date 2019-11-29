@@ -5,12 +5,13 @@
       <br />
       <b>
         接触PHP，
-        <br />
-        开始了第一个对 Typecho 主题的开发与移植
+        <br />开始了第一个对 Typecho 主题的开发与移植
       </b>
     </p>
     <p>感谢保罗，许可我移植如此精致的主题。</p>
     <p>完成第一个小目标，GitHub连击100天。</p>
+
+    <img src="./../../assets/20190626085850.png" alt />
   </BasicLayout>
 </template>
 
@@ -23,5 +24,3 @@ export default {
 }
 </script>
 
-<style>
-</style>
