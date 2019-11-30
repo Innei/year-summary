@@ -19,14 +19,13 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-@import '../stylus/_color'
 header
   position sticky
   top 0
   height 30px
   line-height 30px
   padding 0.5rem 1rem
-  background rgba(255, 255, 255, 0.8)
+  background rgba(255, 255, 255, 0.2)
   backdrop-filter blur(5px)
   display flex
   justify-content space-between

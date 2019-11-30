@@ -13,6 +13,7 @@
     "scrollmagic": "^2.0.7",
     "scrollmagic-plugin-gsap": "^1.0.3",
     "vue": "^2.6.10",
+    "vue-analytics": "^5.18.0",
     "vue2-perfect-scrollbar": "^1.2.4",
     "vuex": "^3.0.1"
   },

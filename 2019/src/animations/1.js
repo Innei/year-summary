@@ -8,11 +8,11 @@ export default {
     this.tl
       .addLabel('start', 0)
       .to(
-        '#three #body',
+        '#two #body',
         2,
         {
           transformOrigin: '50% 75%',
-          scale: 1.05,
+          // scale: 1.05,
           yPercent: -2,
           ease: Power2.easeInOut,
           repeat: -1,
@@ -21,18 +21,7 @@ export default {
         'start'
       )
       .to(
-        '#three #right-hand, .hand-fill.r',
-        2,
-        {
-          xPercent: 5,
-          yoyo: true,
-          repeat: -1,
-          ease: Power2.easeInOut
-        },
-        'start'
-      )
-      .to(
-        '#three #left-hand, #three #right-hand, .hand-fill',
+        '#two #left-hand, #two #right-hand, #two #left-hand-fill, #two #right-hand-fill',
         1.5,
         {
           rotationZ: 5,

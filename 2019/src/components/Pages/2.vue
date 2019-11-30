@@ -20,6 +20,7 @@
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
+          id="scene-1"
         >
           <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
           <g
@@ -273,7 +274,7 @@ export default {
 
 <style lang="stylus" scoped>
 svg {
-  visibility: visible;
+  // visibility: visible;
   width: 25vw;
   height: 25vh;
   position: absolute;
