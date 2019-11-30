@@ -36,18 +36,44 @@
     <div class="page-navigation" ref="navigation">
       <div class="arrow"></div>
     </div>
+
+    <div class="loading" ref="loader">
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          style="margin:auto;display:block;visibility: unset"
+          width="78px"
+          height="78px"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid"
+        >
+          <circle cx="50" cy="33.847" r="15" fill="#e15b64">
+            <animate
+              attributeName="cy"
+              dur="0.9803921568627451s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.45 0 0.9 0.55;0 0.45 0.55 0.9"
+              keyTimes="0;0.5;1"
+              values="25;75;25"
+            />
+          </circle>
+        </svg>坐和放宽，马上就好
+        <br />10Mbps 环境下大概需要 6 秒
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
 import * as ScrollMagic from 'scrollmagic'
-
-import { TweenMax, TimelineMax } from 'gsap'
+import { gsap, TweenMax, TimelineMax, CSSPlugin } from 'gsap/all'
 import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 
 import { mapActions, mapGetters } from 'vuex'
-
+gsap.registerPlugin(CSSPlugin)
 import Header from './components/Header'
 import BigHead from './components/BigHead'
 import One from './components/Pages/1'
@@ -84,7 +110,7 @@ export default {
   computed: {
     ...mapGetters(['viewport'])
   },
-  data() {
+  data () {
     return {
       scroller: new ScrollMagic.Controller(),
       scenes: [],
@@ -95,7 +121,7 @@ export default {
   },
   methods: {
     ...mapActions(['updateViewport']),
-    setupScenes() {
+    setupScenes () {
       const scenesElements = document.querySelectorAll('.scene')
       for (let [i, scenesElement] of Array.from(scenesElements).entries()) {
         this.tweeners[i] = new TimelineMax()
@@ -130,11 +156,11 @@ export default {
           })
       }
     },
-    buildLoops() {
+    buildLoops () {
       A1.build()
       A2.build()
     },
-    hookLoops() {
+    hookLoops () {
       this.scenes[0].on('enter', e => {
         if (e.scrollDirection === 'FORWARD') {
           A1.play()
@@ -189,7 +215,7 @@ export default {
         }
       })
     },
-    sceneA1() {
+    sceneA1 () {
       this.timeLines[1]
         .set('#scene-1', {
           autoAlpha: 0,
@@ -211,7 +237,7 @@ export default {
           yPercent: -350
         })
     },
-    sceneA2() {
+    sceneA2 () {
       this.timeLines[2]
         .set('#scene-2', {
           autoAlpha: 0,
@@ -233,7 +259,7 @@ export default {
           yPercent: 400
         })
     },
-    sceneA3() {
+    sceneA3 () {
       this.timeLines[5]
         .set('#wave', {
           autoAlpha: 0,
@@ -254,7 +280,7 @@ export default {
           // yPercent: 400,
         })
     },
-    handleClick(e) {
+    handleClick (e) {
       // console.log(e);
 
       this.$refs.bg.style.top = e.y + 'px'
@@ -264,12 +290,22 @@ export default {
       this.ok = 1
     }
   },
-  created() {
+  created () {
     this.updateViewport()
     window.addEventListener('resize', this.updateViewport)
     window.addEventListener('beforeunload', () => window.scroll(0, 0))
+
+    window.onload = () => {
+      this.loading = false
+      window.scroll(0, 0)
+      TweenMax.to('.loading', {
+        autoAlpha: 0
+      })
+
+      window.onload = null
+    }
   },
-  mounted() {
+  mounted () {
     this.setupScenes()
     this.buildLoops()
     this.hookLoops()

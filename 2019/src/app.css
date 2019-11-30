@@ -163,3 +163,31 @@ blockquote {
     transform: translateY(0);
   }
 }
+
+.loading {
+  position: fixed;
+  z-index: 99;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+.loading p {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  text-align: center
+}
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #eee;
+}
