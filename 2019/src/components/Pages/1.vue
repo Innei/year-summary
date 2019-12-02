@@ -13,7 +13,6 @@
           </blockquote>
           <p>时间总是在不经意间，流逝了。</p>
           <p>而我又做了些什么。</p>
-          <!-- <pre ref="code">[{{process}}]</pre> -->
         </div>
       </div>
 
@@ -33,46 +32,8 @@ export default {
   computed: {
     ...mapGetters(['viewport'])
   }
-  // data () {
-  //   return {
-  //     process: '======================='
-  //   }
-  // },
-  // mounted () {
-  //   this.processInit()
-  //   this.$watch('go', (v) => {
-  //     if (v) {
-  //       this.processGo()
-  //     } else {
-  //       this.processInit()
-  //     }
-  //   }, { deep: true })
-  // },
-  // methods: {
-  //   processInit() {
-  //      this.process = '='.repeat(this.$refs.code.offsetWidth / 8)
-  //   },
-  //   processGo () {
-
-  //     let i = 0
-  //     let length = this.process.length
-  //     const timer = setInterval(() => {
-  //       const arr = this.process.split('')
-  //       arr[i++] = '#'
-  //       this.process = arr.join('')
-  //       if (i === length) {
-  //         clearInterval(timer)
-  //       }
-  //     }, 40);
-  //   }
-  // }
 }
 
-// function sleep (time) {
-//   return new Promise(r => {
-//     setTimeout(r, time);
-//   })
-// }
 </script>
 
 <style lang="stylus" scoped>

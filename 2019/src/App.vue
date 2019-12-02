@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <BigHead></BigHead>
+    <Header />
+    <BigHead />
     <One />
     <Two />
     <Three />
@@ -126,9 +126,11 @@ export default {
       for (let [i, scenesElement] of Array.from(scenesElements).entries()) {
         this.tweeners[i] = new TimelineMax()
         this.timeLines[i] = new TimelineMax({ paused: true })
+
+        const staticContainer = scenesElement.querySelector('.static-container')
         this.scenes[i] = new ScrollMagic.Scene({
           triggerElement: scenesElement,
-          // offset: -this.viewport.h / 2,
+          // offset: '-25vw',
           duration: scenesElement.offsetHeight
         })
           .setTween(this.tweeners[i])
@@ -136,19 +138,20 @@ export default {
           .reverse(true)
           .setClassToggle(scenesElement, 'active')
         this.tweeners[i]
+          .addLabel('start')
           .fromTo(
-            '.static-container',
+            staticContainer,
             1,
             { autoAlpha: 0, filter: 'blur(5px)' },
             { autoAlpha: 1, filter: 'blur(0px)' }
-          )
-          .to(scenesElement, 1, { autoAlpha: 1 })
+            , 'start')
+          .to(scenesElement, 2, { autoAlpha: 1 }, 'start+=1')
           .fromTo(
-            '.static-container',
+            staticContainer,
             1,
             { autoAlpha: 1, filter: 'blur(0px)' },
             { autoAlpha: 0, filter: 'blur(5px)' }
-          )
+            , 'start+=3')
           .eventCallback('onUpdate', () => {
             TweenMax.to(this.timeLines[i], 0.5, {
               progress: this.tweeners[i].progress()
