@@ -2,13 +2,14 @@
   /* padding: calc(50vh - 3.5rem) 0 0; */
   margin: 0 25vw;
   min-height: 100vh;
-  -webkit-perspective: 900px;
-  perspective: 900px;
-  -webkit-perspective-origin: 50% 50vh;
-  perspective-origin: 50% 50vh;
   display: flex;
   align-items: center
 }
+
+.scene:not(.active) .static-container {
+  opacity: 0 !important;
+}
+
 @media (max-width: 550px) {
   .static-container {
     margin: 0 12vw;

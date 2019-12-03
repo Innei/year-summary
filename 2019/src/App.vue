@@ -130,7 +130,7 @@ export default {
         const staticContainer = scenesElement.querySelector('.static-container')
         this.scenes[i] = new ScrollMagic.Scene({
           triggerElement: scenesElement,
-          // offset: '-25vw',
+          // offset: -scenesElement.offsetHeight / 6 ,
           duration: scenesElement.offsetHeight
         })
           .setTween(this.tweeners[i])
@@ -139,6 +139,7 @@ export default {
           .setClassToggle(scenesElement, 'active')
         this.tweeners[i]
           .addLabel('start')
+          .set(staticContainer, { opacity: 0, filter: 'blur(0px)' })
           .fromTo(
             staticContainer,
             1,
