@@ -3,7 +3,7 @@
     <div class="year">
       <span>{{ year }}</span>
       <span class="dot">·</span>
-      <span>年鉴</span>
+      <span>历程</span>
     </div>
     <div class="theme">
       <span>{{ theme }}</span>

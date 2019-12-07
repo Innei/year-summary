@@ -33,7 +33,6 @@ export default {
     ...mapGetters(['viewport'])
   }
 }
-
 </script>
 
 <style lang="stylus" scoped>

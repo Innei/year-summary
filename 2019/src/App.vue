@@ -28,6 +28,10 @@
             <div class="btn" @click="handleClick" ref="finish_btn">
               <span>{{ !ok ? '嗯！' : '好耶！' }}</span>
             </div>
+            <span class="leave-message" v-if="ok"
+              >前往<a href="https://innei.ren/archives/218/">这里</a>,
+              留下你宝贵的一言</span
+            >
           </div>
         </div>
       </div>
@@ -58,9 +62,8 @@
               keyTimes="0;0.5;1"
               values="25;75;25"
             />
-          </circle>
-        </svg>坐和放宽，马上就好
-        <br />10Mbps 环境下大概需要 6 秒
+          </circle></svg
+        >坐和放宽，马上就好 <br />10Mbps 环境下大概需要 6 秒
       </p>
     </div>
   </div>
@@ -110,7 +113,7 @@ export default {
   computed: {
     ...mapGetters(['viewport'])
   },
-  data () {
+  data() {
     return {
       scroller: new ScrollMagic.Controller(),
       scenes: [],
@@ -121,7 +124,7 @@ export default {
   },
   methods: {
     ...mapActions(['updateViewport']),
-    setupScenes () {
+    setupScenes() {
       const scenesElements = document.querySelectorAll('.scene')
       for (let [i, scenesElement] of Array.from(scenesElements).entries()) {
         this.tweeners[i] = new TimelineMax()
@@ -144,15 +147,17 @@ export default {
             staticContainer,
             1,
             { autoAlpha: 0, filter: 'blur(5px)' },
-            { autoAlpha: 1, filter: 'blur(0px)' }
-            , 'start')
+            { autoAlpha: 1, filter: 'blur(0px)' },
+            'start'
+          )
           .to(scenesElement, 2, { autoAlpha: 1 }, 'start+=1')
           .fromTo(
             staticContainer,
             1,
             { autoAlpha: 1, filter: 'blur(0px)' },
-            { autoAlpha: 0, filter: 'blur(5px)' }
-            , 'start+=3')
+            { autoAlpha: 0, filter: 'blur(5px)' },
+            'start+=3'
+          )
           .eventCallback('onUpdate', () => {
             TweenMax.to(this.timeLines[i], 0.5, {
               progress: this.tweeners[i].progress()
@@ -160,11 +165,11 @@ export default {
           })
       }
     },
-    buildLoops () {
+    buildLoops() {
       A1.build()
       A2.build()
     },
-    hookLoops () {
+    hookLoops() {
       this.scenes[0].on('enter', e => {
         if (e.scrollDirection === 'FORWARD') {
           A1.play()
@@ -219,7 +224,7 @@ export default {
         }
       })
     },
-    sceneA1 () {
+    sceneA1() {
       this.timeLines[1]
         .set('#scene-1', {
           autoAlpha: 0,
@@ -241,7 +246,7 @@ export default {
           yPercent: -350
         })
     },
-    sceneA2 () {
+    sceneA2() {
       this.timeLines[2]
         .set('#scene-2', {
           autoAlpha: 0,
@@ -263,7 +268,7 @@ export default {
           yPercent: 400
         })
     },
-    sceneA3 () {
+    sceneA3() {
       this.timeLines[5]
         .set('#wave', {
           autoAlpha: 0,
@@ -284,7 +289,7 @@ export default {
           // yPercent: 400,
         })
     },
-    handleClick (e) {
+    handleClick(e) {
       // console.log(e);
 
       this.$refs.bg.style.top = e.y + 'px'
@@ -294,7 +299,7 @@ export default {
       this.ok = 1
     }
   },
-  created () {
+  created() {
     this.updateViewport()
     window.addEventListener('resize', this.updateViewport)
     window.addEventListener('beforeunload', () => window.scroll(0, 0))
@@ -309,7 +314,7 @@ export default {
       window.onload = null
     }
   },
-  mounted () {
+  mounted() {
     this.setupScenes()
     this.buildLoops()
     this.hookLoops()
@@ -345,4 +350,22 @@ html
 @media (max-width: 550px)
   .static-container
     margin 0 12vw
+.leave-message
+  position absolute
+  animation message 1s forwards ease-in
+  a
+    margin 0 5px
+    position relative
+    color: #f6e58d
+    transition color .5s
+  a:hover
+    color: #ffbe76
+
+@keyframes message
+  0%
+    bottom -0.5rem
+    opacity 0
+  to
+    bottom -3rem
+    opacity 1
 </style>

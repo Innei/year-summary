@@ -2,7 +2,7 @@
   <div class="big_head">
     <div class="wrap">
       <div class="title">
-        {{ year }}·年鉴
+        {{ year }}·历程
         <br />
         <span class="theme">{{ theme }}</span>
       </div>
