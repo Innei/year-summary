@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200&display=swap');
+html {
+  font: 14px/1.5 'Noto Serif SC', -apple-system, serif;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  body,
+  html {
+    background-color: #333;
+    color: #eee;
+  }
+}
+
+a,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: #408f5a;
+}
+
+button {
+  outline: 0;
+  padding: 0.5rem 1rem;
+  border: 0;
+  background-color: #2c9aa8;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  align-items: center;
+}
+
+button:focus {
+  outline: 0;
+}
