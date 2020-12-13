@@ -7,6 +7,8 @@
     "start": "next dev"
   },
   "dependencies": {
+    "@analytics/google-analytics": "0.5.2",
+    "analytics": "0.6.2",
     "normalize.css": "8.0.1",
     "postcss-modules": "4.0.0",
     "rc-queue-anim": "1.8.5",

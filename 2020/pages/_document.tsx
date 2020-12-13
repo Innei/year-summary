@@ -16,7 +16,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="zh-cn">
-        <Head />
+        <Head>
+          <title>2020 · 春华秋实</title>
+          <meta name="description" content="2020,春华秋实" />
+          <meta name="keywords" content="year,2020,summary,innei" />
+        </Head>
+
         <body>
           <Main />
           <NextScript />

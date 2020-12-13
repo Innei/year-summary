@@ -1,0 +1,55 @@
+.arrow {
+  opacity: 1;
+  user-select: none;
+  transition: opacity 0.5s;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+  animation: jump infinite ease-in-out 3s;
+  &.hide {
+    opacity: 0;
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+.tip {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-size: 12px;
+  opacity: 0.6;
+}
+.overflow {
+  overflow: hidden;
+  height: 100vh;
+
+  & .arrow {
+    opacity: 0;
+  }
+  & .tip {
+    opacity: 0;
+  }
+}
+
+.start {
+  margin-top: 12px;
+}
+
+.home-text {
+  width: 76px;
+  margin: auto !important;
+}
