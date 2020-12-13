@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "next dev"
+    "start": "next dev",
+    "build": "next build && next export"
   },
   "dependencies": {
     "@analytics/google-analytics": "0.5.2",

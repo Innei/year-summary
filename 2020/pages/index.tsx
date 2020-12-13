@@ -23,12 +23,12 @@ const analytics = Analytics({
     }),
   ],
 })
-analytics.page()
 export const Index: React.FC = () => {
   const [isBottom, setBottom] = React.useState(false)
   const [isPlayed, setPlay] = React.useState(false)
   const [isStart, setStart] = React.useState(false)
   React.useEffect(() => {
+    analytics.page()
     window.onscroll = () => {
       if (
         window.document.documentElement.scrollHeight -
