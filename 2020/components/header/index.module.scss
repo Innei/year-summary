@@ -6,8 +6,6 @@
   right: 0;
   z-index: 9;
   background-color: rgba(255, 255, 255, 0.623);
-  user-select: none;
-  cursor: pointer;
 
   @media (prefers-color-scheme: dark) {
     background-color: rgba(0, 0, 0, 0.123);
@@ -24,6 +22,8 @@
   justify-content: space-between;
 
   .title {
+    user-select: none;
+    cursor: pointer;
     font-size: 18px;
     line-height: 1;
 
