@@ -89,6 +89,11 @@ export const Copy: ICopy[] = [
   },
   {
     title: 'To Be Continue.',
-    description: <p>余生还有很长 故事还要继续</p>,
+    description: (
+      <>
+        <p>余生还有很长 故事还要继续</p>
+        <p>谢谢你，陌生人。</p>
+      </>
+    ),
   },
 ]
